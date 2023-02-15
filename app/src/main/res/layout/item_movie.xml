@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="movie"
+            type="me.shohag.moviemania.data.network.model.MovieResponse.Result" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/movie_img"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:contentDescription="@string/movie_image"
+            app:loadImg="@{`https://image.tmdb.org/t/p/original/`+movie.posterPath}"
+            tools:src="@drawable/film"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{movie.originalTitle}"
+            android:textSize="16sp"
+            android:textStyle="bold|italic"
+            android:padding="4dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:background="@android:color/holo_blue_light"
+            app:layout_constraintBottom_toBottomOf="@+id/movie_img"
+            tools:text="Titanic" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
