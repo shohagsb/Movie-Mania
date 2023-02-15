@@ -10,33 +10,40 @@
             type="me.shohag.moviemania.data.network.model.MovieResponse.Result" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="12dp">
+        android:layout_margin="8dp"
+        app:cardCornerRadius="4dp">
 
-        <ImageView
-            android:id="@+id/movie_img"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:contentDescription="@string/movie_image"
-            app:loadImg="@{`https://image.tmdb.org/t/p/original/`+movie.posterPath}"
-            tools:src="@drawable/film"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@{movie.originalTitle}"
-            android:textSize="16sp"
-            android:textStyle="bold|italic"
-            android:padding="4dp"
-            android:maxLines="2"
-            android:ellipsize="end"
-            android:background="@android:color/holo_blue_light"
-            app:layout_constraintBottom_toBottomOf="@+id/movie_img"
-            tools:text="Titanic" />
+            <ImageView
+                android:id="@+id/movie_img"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:contentDescription="@string/movie_image"
+                app:layout_constraintTop_toTopOf="parent"
+                app:loadImg="@{`https://image.tmdb.org/t/p/original/`+movie.posterPath}"
+                tools:src="@drawable/film" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/holo_blue_light"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:padding="4dp"
+                android:text="@{movie.originalTitle}"
+                android:textSize="16sp"
+                android:textStyle="bold|italic"
+                app:layout_constraintBottom_toBottomOf="@+id/movie_img"
+                tools:text="Titanic" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
 </layout>

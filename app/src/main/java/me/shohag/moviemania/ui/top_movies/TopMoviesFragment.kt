@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import me.shohag.moviemania.BuildConfig
 import me.shohag.moviemania.databinding.FragmentTopMoviesBinding
 import me.shohag.moviemania.ui.adapter.MovieAdapter
 
@@ -50,15 +49,8 @@ class TopMoviesFragment : Fragment() {
      * */
     private fun bindList() {
         lifecycleScope.launch {
-            viewModel.fetchTopMovies(
-                apiKey = BuildConfig.API_TOKEN,
-                language = ENG_LANG,
-            ).collectLatest(adapter::submitData)
+            viewModel.fetchTopMovies().collectLatest(adapter::submitData)
         }
-    }
-
-    companion object {
-        private const val ENG_LANG = "en-US"
     }
 
 }

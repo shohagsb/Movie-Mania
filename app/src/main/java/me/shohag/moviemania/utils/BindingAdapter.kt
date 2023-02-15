@@ -10,7 +10,7 @@ fun loadImg(imageView: ImageView, url: String?) {
     url?.let {
         Glide.with(imageView.context)
             .load(url)
-//            .placeholder(R.drawable.loading_animation)
+            .placeholder(R.drawable.loading_anim)
             .error(R.drawable.film)
             .into(imageView)
     }

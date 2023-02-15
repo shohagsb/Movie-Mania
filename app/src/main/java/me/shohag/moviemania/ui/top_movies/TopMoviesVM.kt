@@ -14,7 +14,7 @@ class TopMoviesVM @Inject constructor(
     private val repository: MovieRepository
 ) : ViewModel() {
 
-    fun fetchTopMovies(apiKey: String, language: String) : Flow<PagingData<MovieResponse.Result>> =
-        repository.getTopMovies(apiKey = apiKey, language = language)
+    fun fetchTopMovies() : Flow<PagingData<MovieResponse.Result>> =
+        repository.getTopMovies()
 
 }

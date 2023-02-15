@@ -14,13 +14,12 @@ private const val STARTING_PAGE_INDEX = 1
 class MoviePagingSource(
     private val service: MovieApiService,
     private val apiKey: String,
-    private val language: String,
 ) : PagingSource<Int, MovieResponse.Result>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MovieResponse.Result> {
         val position = params.key ?: STARTING_PAGE_INDEX
         return try {
-            val response = service.fetchTopMovies(apiKey = apiKey, language = language, page = position)
+            val response = service.fetchTopMovies(apiKey = apiKey, page = position)
             val repos = response.results
             val nextKey = if (repos.isEmpty()) {
                 null

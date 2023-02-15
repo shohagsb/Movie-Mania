@@ -1,13 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.move_details.MovieDetailsFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
+    <data>
+
+        <variable
+            name="movie"
+            type="me.shohag.moviemania.data.network.model.MovieResponse.Result" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:paddingHorizontal="12dp"
+        tools:context=".ui.move_details.MovieDetailsFragment">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/movie_img"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:contentDescription="@string/movie_image"
+            android:src="@drawable/film"
+            app:layout_constraintTop_toTopOf="parent"
+            app:loadImg="@{`https://image.tmdb.org/t/p/original/`+movie.backdropPath}" />
+
+        <TextView
+            android:id="@+id/name_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@{movie.originalTitle}"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/movie_img"
+            tools:text="Avengers" />
+
+        <TextView
+            android:id="@+id/overview_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@{movie.overview}"
+            android:textStyle="italic"
+            app:layout_constraintTop_toBottomOf="@+id/name_text"
+            tools:text="Avengers" />
+
+        <TextView
+            android:id="@+id/vote_count_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@{`Total Vote: `+movie.voteCount}"
+            android:textColor="@android:color/holo_orange_dark"
+            app:layout_constraintStart_toStartOf="@+id/overview_text"
+            app:layout_constraintTop_toBottomOf="@+id/overview_text"
+            tools:text="Total Vote: 1000" />
+
+        <TextView
+            android:id="@+id/release_date_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{`Released on: `+movie.releaseDate}"
+            android:textColor="@android:color/holo_blue_light"
+            app:layout_constraintBaseline_toBaselineOf="@+id/vote_count_text"
+            app:layout_constraintEnd_toEndOf="@+id/overview_text"
+            tools:text="Released on: 12th Jan, 23" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
